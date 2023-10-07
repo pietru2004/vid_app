@@ -26,6 +26,7 @@ Run command: docker-compose up -d
 ## License
 
 MIT with one small change:
+
 Commercial Use Allowed if you:
 - Change Database Admin Email
 - Change Database Admin Password
