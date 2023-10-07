@@ -1,0 +1,32 @@
+{{define "title"}}
+    {{.vid_tittle}}
+{{end}}
+
+{{define "body"}}
+    <style>
+        video {
+            width: 100% !important;
+            max-width: 1280px;
+            height: auto !important;
+        }
+        section {
+            background-color: white;
+            border-radius: 10px;
+            max-width: 1280px;
+            padding: 5px;
+            text-align: left;
+        }
+        p, h2 {
+            margin: 10px 10px;
+        }
+    </style>
+    <center>
+        <section>
+            <video autoplay controls>
+                <source src="{{.vid_src}}">
+            </video>
+            <h2>{{.vid_tittle}}</h2>
+            <p>{{.vid_desc}}</p> 
+        </section>
+    </center>
+{{end}}

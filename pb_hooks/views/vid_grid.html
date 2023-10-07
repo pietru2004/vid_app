@@ -1,0 +1,59 @@
+{{define "title"}}
+    {{.tittle}}
+{{end}}
+
+{{define "body"}}
+    <style>
+        img {
+            width: 100% !important;
+            max-width: 300px;
+            height: auto !important;
+        }
+        section {
+            background-color: white;
+            border-radius: 10px;
+            max-width: 1280px;
+            padding: 5px;
+            text-align: left;
+        }
+        p, h2 {
+            margin: 10px 10px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto;
+            column-gap: 25px;
+            row-gap: 25px;
+        }
+
+        @media only screen and (min-width: 700px) {
+            .grid-container {grid-template-columns: auto auto;}
+        }
+        @media only screen and (min-width: 1000px) {
+            .grid-container {grid-template-columns: auto auto auto;}
+        }
+        
+        .grid-item {
+            border: 2px solid black;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        a:link {
+            text-decoration: none;
+        }
+    </style>
+    <center>
+        <section>
+            <h2>{{.tittle}}</h2>
+            <section class="grid-container">
+                {{range $v := .vids}} 
+                    <article class="grid-item">
+                        <a href="http://localhost:8090/v/{{$v.id}}"><img src="http://localhost:8090/api/files/videos/{{$v.id}}/{{$v.icon}}" alt="{{$v.tittle}}"></h4></a>
+                        <a href="http://localhost:8090/v/{{$v.id}}"><h4>{{$v.tittle}}</h4></a>
+                    </article>
+                {{end}}
+            </section>
+        </section>
+    </center>
+{{end}}

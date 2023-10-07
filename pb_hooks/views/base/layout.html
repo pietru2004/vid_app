@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{block "title" .}}Default app title{{end}}</title>
+</head>
+<body style="background-color: gray; margin: 0px 8px;">
+    {{block "header" .}}
+        Default app header
+    {{end}}
+
+    <main style="min-height: calc(100vh - 40px);">
+        {{block "body" .}}
+            Default app body...
+        {{end}}
+    </main>
+    
+    {{block "footer" .}}
+        
+    {{end}}
+</body>
+</html>

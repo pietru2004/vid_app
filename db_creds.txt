@@ -1,0 +1,7 @@
+admin:
+login: test@example.com
+password: 1234567890
+
+===========================
+
+test_user: 12345678

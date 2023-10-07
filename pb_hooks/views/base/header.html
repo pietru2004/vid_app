@@ -1,0 +1,40 @@
+{{define "header"}}
+    <style>
+        nav {
+            max-width: 512px;
+            background-color: bisque;
+            border-radius: 0px 0px 5px 5px;
+            padding: 2px 5px 5px;
+        }
+        header {
+            margin-bottom: 20px;
+        }
+        .headnav:link, .headnav:visited {
+            background-color: white;
+            color: black;
+            border: 2px solid chocolate;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .headnav:hover, .headnav:active {
+            background-color: chocolate;
+            color: white;
+        }
+    </style>
+    <header>
+        <center>
+            <nav>
+                <a class="headnav" href="/">Newest</a>
+                {{if .authorized}}
+                    <a class="headnav" href="/upload">Upload</a>
+                    <a class="headnav" href="/signout">Signout</a>
+                {{else}}
+                    <a class="headnav" href="/login">Login</a>
+                {{end}}
+            </nav>
+        </center>
+    </header>
+{{end}}

@@ -1,0 +1,84 @@
+{{define "title"}}
+    {{.tittle}}
+{{end}}
+
+{{define "body"}}
+    <style>
+        img {
+            width: 100% !important;
+            max-width: 300px;
+            height: auto !important;
+        }
+        section {
+            background-color: white;
+            border-radius: 10px;
+            max-width: 640px;
+            padding: 5px;
+            text-align: left;
+        }
+        p, h2 {
+            margin: 10px 10px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto;
+            column-gap: 25px;
+            row-gap: 25px;
+        }
+
+
+        label {
+            text-align: center;
+        }
+
+        @media only screen and (min-width: 700px) {
+            .grid-container {grid-template-columns: auto auto;}
+            label {text-align: end;}
+        }
+        @media only screen and (min-width: 1000px) {
+            .grid-container {grid-template-columns: auto auto;}
+        }
+        
+        .grid-item {
+            border: 2px solid black;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        a:link {
+            text-decoration: none;
+        }
+
+        .link_button:link, .link_button:visited {
+            background-color: white;
+            color: black;
+            border: 2px solid chocolate;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .link_button:hover, .link_button:active {
+            background-color: chocolate;
+            color: white;
+        }
+    </style>
+    <center>
+        <section>
+            <h2>{{.tittle}}</h2>
+            {{if .hide_form}}
+                <a class="link_button" href="/">Go Home</a>
+            {{else}}
+                <form action="/login" method="post" class="grid-container">
+                    <label for="usrname">Username:</label>
+                    <input type="text" name="identity" id="usrname">
+                    <label for="passwd">Password:</label>
+                    <input type="password" name="password" id="passwd">
+                    <p></p>
+                    <button type="submit">Submit</button>
+                </form>
+            {{end}}
+        </section>
+    </center>
+{{end}}

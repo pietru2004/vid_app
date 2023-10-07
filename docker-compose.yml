@@ -1,0 +1,16 @@
+version: '2'
+services:
+  db:
+    build: .
+    tty: true
+    stdin_open: true
+    environment:
+      - TimeZone=Europe/Warsaw # Optional - Change Timezone
+    volumes:
+      - ./pb_data:/pb/pb_data
+      - ./pb_hooks:/pb/pb_hooks 
+      #For production you might want to copy pb_hooks directly into image.
+      #Some hosting providers might not allow you to dynamicaly change pb_hooks.
+    ports:
+      - 8090:8090
+    restart: unless-stopped

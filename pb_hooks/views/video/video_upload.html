@@ -1,0 +1,132 @@
+{{define "title"}}
+    {{.tittle}}
+{{end}}
+
+{{define "body"}}
+    <style>
+        img {
+            width: 100% !important;
+            max-width: 300px;
+            height: auto !important;
+        }
+        section {
+            background-color: white;
+            border-radius: 10px;
+            max-width: 640px; /*1280*/
+            padding: 5px;
+            text-align: left;
+        }
+        p, h2 {
+            margin: 10px 10px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto;
+            column-gap: 25px;
+            row-gap: 25px;
+        }
+
+        label {
+            text-align: center;
+        }
+
+        @media only screen and (min-width: 700px) {
+            .grid-container {grid-template-columns: auto auto;}
+            label {text-align: end;}
+        }
+        @media only screen and (min-width: 1000px) {
+            .grid-container {grid-template-columns: auto auto;}
+        }
+        
+        .grid-item {
+            border: 2px solid black;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        a:link {
+            text-decoration: none;
+        }
+
+        .link_button:link, .link_button:visited {
+            background-color: white;
+            color: black;
+            border: 2px solid chocolate;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .link_button:hover, .link_button:active {
+            background-color: chocolate;
+            color: white;
+        }
+
+        .alert_success {
+            padding: 20px;
+            background-color: #04AA6D;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .alert_fail {
+            padding: 20px;
+            background-color: #f44336;
+            color: white;
+            border-radius: 4px;
+        }
+        
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .closebtn:hover {
+            color: black;
+        }
+    </style>
+    <center>
+        <section>
+            <h2>{{.tittle}}</h2>
+            {{if .authorized}}
+                <form action="/upload" method="post" class="grid-container" enctype="multipart/form-data">
+                    <label for="titl">Tittle:</label>
+                    <input type="text" name="tittle" id="titl">
+                    <label for="desc">Desc:</label>
+                    <input type="text" name="desc" id="desc">
+                    <label for="image">Image:</label>
+                    <input type="file" name="icon" id="image" accept="image/png, image/jpeg, image/svg+xml, image/webp">
+                    <label for="vid">Video:</label>
+                    <input type="file" name="video" id="vid" accept="video/mp4, video/webm">
+                    <label for="publ">Public:</label>
+                    <input type="checkbox" name="public" id="publ" checked>
+                    <p></p>
+                    <button type="submit">Submit</button>
+                </form>
+                <br>
+                {{if .upload_started}}
+                    {{if .upload_success}}
+                        <div class="alert_success">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            <strong>Upload Success!</strong> {{.upload_txt}}
+                        </div>
+                    {{else}}
+                        <div class="alert_fail">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            <strong>Upload Failed</strong> {{.upload_txt}}
+                        </div>
+                    {{end}}
+                {{end}}
+            {{else}}
+                <a class="link_button" href="/">Go Home</a>
+            {{end}}
+        </section>
+    </center>
+{{end}}
